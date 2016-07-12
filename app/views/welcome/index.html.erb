@@ -1,0 +1,38 @@
+<h1>Welcome to My Travel Site!</h1>
+<p>This is a very awesome site, indeed.</p>
+
+<p><% @homestate %></p> <!-- wrong -->
+
+<p><%= @homestate %></p> <!-- correct -->
+
+<!-- print array items in an unordered list -->
+<ul>
+	<% @countries.each do |country| %>
+		<li><%= country %></li>
+	<% end %>
+</ul>
+
+<!-- Single image -->
+<!-- <p>
+	<%#= image_tag 'peru1.jpg', alt: 'Happy llama', id: 'llama_pic', class: 'travel-pics' %>
+</p> -->
+
+<!-- Multiple images; file names stored in an array; no custom alt messages -->
+<%# @pictures.each do |pic| %>
+	<!-- <p>
+		<%#= image_tag pic %>
+	</p> -->
+<%# end %>
+
+<!-- Multiple images; stored in hash - files names are key and alt messages are values -->
+<% @picture_hash.each do |name, descr| %>
+	<p>
+		<%= image_tag name, alt: descr %>
+	</p>
+<% end %>
+
+
+
+
+
+
