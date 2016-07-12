@@ -27,7 +27,7 @@
 <!-- Multiple images; stored in hash - files names are key and alt messages are values -->
 <% @picture_hash.each do |name, descr| %>
 	<p>
-		<%= image_tag name, alt: descr %>
+		<%= image_tag name, alt: descr, class: "img-responsive" %>
 	</p>
 <% end %>
 
