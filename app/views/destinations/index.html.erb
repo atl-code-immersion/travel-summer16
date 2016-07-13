@@ -1,0 +1,41 @@
+<% if notice != nil %>
+  <p id="notice" class="alert alert-success" role="alert">
+    <%= notice %>
+  </p>
+<% end %>
+
+<h1>Where Should We Go?</h1>
+
+<p>
+  <%= link_to 'New Destination', new_destination_path, class: "btn btn-success" %>
+</p>
+
+
+
+<ul class="nav nav-pills" role="tablist">
+  <li><%= link_to "All", destinations_path %></li>
+
+  <% @my_countries.each do |country| %>
+    <li><%= link_to country, destinations_path(country: country) %></li>
+  <% end %>
+</ul>
+
+
+
+<div class="row">
+  <% @destinations.each do |destination| %>
+    <div class="col-md-4">
+      <div class="well">
+        <h3><%= link_to "#{destination.city}, #{destination.country}", destination %></h3>
+        <p>
+          <strong>Pop.:</strong> <%= number_with_delimiter destination.population %>
+        </p>
+        <p><%= destination.description %></p>
+        <p>
+          <%= link_to 'Edit', edit_destination_path(destination), class: "btn btn-warning" %>
+          <%= link_to 'Destroy', destination, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
