@@ -12,8 +12,12 @@
 </p>
 
 <h1>
-  <%= "#{@destination.city}, #{@destination.country}" %>
+  <%= @destination.address %>
 </h1>
+
+<p>
+	<%= @destination.latitude %>, <%= @destination.longitude %>
+</p>
 
 <p>
 	<strong>Pop.:</strong> <%= number_with_delimiter @destination.population %>
@@ -23,7 +27,21 @@
   <%= @destination.description %>
 </p>
 
+<div id="destination-map"></div>
+
+
 <div class="btn-group">
 	<%= link_to 'Edit', edit_destination_path(@destination), class: "btn btn-warning" %>
 	<%= link_to 'Back', destinations_path, class: "btn btn-default" %>
 </div>
+
+<%= javascript_tag do %>
+  var latitude = '<%= j @destination.latitude.to_s %>';
+  var longitude = '<%= j @destination.longitude.to_s %>';
+  var address = '<%= j @destination.address %>';
+  var description = '<%= j @destination.description %>';
+<% end %>
+
+
+
+
